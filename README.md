@@ -3,7 +3,8 @@ Prediction of Airbnb prices in NYC
 
 File : distance_calculation
 
-9:44pm - 10:20pm (46 min) Thursday April 1, 2021
+Thursday April 1, 2021
+9:44pm - 10:20pm (46 min) 
 - Found info coordinates for downtown : 40.7209° N, 74.0007° W
 - Calculation of distance
 - Checking for errors
@@ -13,8 +14,9 @@ Next steps:
 1. include that new column in analysis
 2. google how to calculate the distance that takes into account the spherical shape of the earth (great circle distance)
 3. Delete unnecessary files from this repository
-
-4:24pm - 4:56pm (32min) Friday April 2, 2021
+______________________________________________________
+Friday April 2, 2021
+4:24pm - 4:56pm (32min) 
 
 - Deleted unnecessary files from this repository
 - Included additional commands to do analysis
@@ -22,8 +24,8 @@ Next steps:
 Need to :
 1. Calculate distance from each other - to see concentration and competition
 2. Calculate great circle distance
-
-6:33pm- 
+_____
+6:33pm- 7:14pm (41 min)
 1. Calculate distance from each other - to see concentration and competition
 
 i) brainstorming: what would be the idea? (6:33pm to 6:49pm - 16 min)
@@ -41,3 +43,19 @@ for i in (1,38820):
   dataset['Distance_i'] = (((dataset['latitude_i']-distance['latitude'])**2)+((dataset['longitude_i']-distance['latitude'])**2))**(1/2)
 
 Check syntax
+
+2. Great circle distance ( Googling how to code 6:49-7:14pm)
+
+from math import radians, degrees, sin, cos, asin, acos, sqrt
+def great_circle(lon1, lat1, lon2, lat2):
+    lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
+    return 6371 * (
+        acos(sin(lat1) * sin(lat2) + cos(lat1) * cos(lat2) * cos(lon1 - lon2))
+    )
+If miles, use 3958.756 
+If km use 6371
+Now... how to do a loop ?
+
+Useful link: https://codereview.stackexchange.com/questions/217557/aggregate-pandas-columns-on-geospacial-distance 
+
+- Did a scatter, and looked some previous codes to try to understand how to correctly write the syntax. 
