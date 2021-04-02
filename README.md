@@ -11,3 +11,4 @@ File : distance_calculation
 Next steps: 
 1. include that new column in analysis
 2. google how to calculate the distance that takes into account the spherical shape of the earth
+3. Delete unnecessary files from this repository
