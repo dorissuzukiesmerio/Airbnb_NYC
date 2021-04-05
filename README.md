@@ -44,6 +44,8 @@ for i in (1,38820):
 
 Check syntax
 
+Or: build a matrix where the columnns 
+
 2. Great circle distance ( Googling how to code 6:49-7:14pm)
 
 from math import radians, degrees, sin, cos, asin, acos, sqrt
@@ -59,3 +61,15 @@ Now... how to do a loop ?
 Useful link: https://codereview.stackexchange.com/questions/217557/aggregate-pandas-columns-on-geospacial-distance 
 
 - Did a scatter, and looked some previous codes to try to understand how to correctly write the syntax. 
+
+_____________________________________________
+
+6:10pm - 
+
+Goals: 
+- try to finish analysis with the column I have
+- then, try to correctly write the syntax of the idea for the distance loop.
+
+
+for i in (1,38820):
+  dataset.Distance[i] = (((dataset.latitude[i]]-distance.latitude)**2)+((dataset.longitude[i]-distance.latitude)**2))**(1/2)
