@@ -73,6 +73,6 @@ Goals:
 n = 1
 for i in (1,38821):
   n = n + 1
-  dataset.Distance[i] = (((dataset.latitude[i]]-distance.latitude[n])**2)+((dataset.longitude[i]-distance.latitude[n])**2))**(1/2)
+  dataset.Distance[i] = (((dataset.latitude[i]-distance.latitude[n])**2)+((dataset.longitude[i]-distance.latitude[n])**2))**(1/2)
   
 I realized I was thinking 38820 should be the number, but I should actually use 38821
