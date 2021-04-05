@@ -63,8 +63,9 @@ Useful link: https://codereview.stackexchange.com/questions/217557/aggregate-pan
 - Did a scatter, and looked some previous codes to try to understand how to correctly write the syntax. 
 
 _____________________________________________
+Monday April 5, 2021
 
-6:10pm - 
+6:10pm - 6: 46pm (36 min) 
 
 Goals: 
 - try to finish analysis with the column I have
@@ -76,3 +77,28 @@ for i in (1,38821):
   dataset.Distance[i] = (((dataset.latitude[i]-dataset.latitude[n])**2)+((dataset.longitude[i]-dataset.latitude[n])**2))**(1/2)
   
 I realized I was thinking 38820 should be the number, but I should actually use 38821
+
+__ERRORS:
+1. In the loop for distance between each point
+2. In including Distance to Downtown in prediction
+ValueError: Expected 2D array, got 1D array instead:
+array=[147.84747 147.93526 147.89322 ... 147.91153 148.08002 147.93648].
+Reshape your data either using array.reshape(-1, 1) if your data has a single feature or array.reshape(1, -1) if it contains a single sample.
+
+______________________________________________________
+
+TOTAL : 155 min ( 2h35min) 
+
+Questions for Prof.Tom:
+
+1. Sytax of 
+
+
+n = 1
+for i in (1,38821):
+  n = n + 1
+  dataset.Distance[i] = (((dataset.latitude[i]-dataset.latitude[n])**2)+((dataset.longitude[i]-dataset.latitude[n])**2))**(1/2)
+  
+2. Errors in prediction
+
+3. Hint for writing loop for great circle distance
