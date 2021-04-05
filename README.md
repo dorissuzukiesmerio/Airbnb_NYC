@@ -102,3 +102,20 @@ for i in (1,38821):
 2. Errors in prediction
 
 3. Hint for writing loop for great circle distance
+
+4. It looks like sometimes I am doing something wrong when I try to update the files on git hub 
+
+This is what I have put:
+git remote add origin https://github.com/dorissuzukiesmerio/Airbnb_NYC.git
+git branch -M main
+git push -u origin main![image](https://user-images.githubusercontent.com/78039852/113636280-408d2f80-9640-11eb-94e5-b1edb7668ce3.png)
+
+And this is the message in yellow that I get:
+
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/dorissuzukiesmerio/Airbnb_NYC.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
