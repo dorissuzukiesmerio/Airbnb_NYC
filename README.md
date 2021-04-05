@@ -71,5 +71,6 @@ Goals:
 - then, try to correctly write the syntax of the idea for the distance loop.
 
 
-for i in (1,38820):
+for i in (1,38821):
   dataset.Distance[i] = (((dataset.latitude[i]]-distance.latitude)**2)+((dataset.longitude[i]-distance.latitude)**2))**(1/2)
+I realized I was thinking 38820 should be the number, but I should actually use 38821
