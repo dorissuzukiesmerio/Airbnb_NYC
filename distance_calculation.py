@@ -56,13 +56,14 @@ print("Index of min distance to downtown")
 # linear_min_dist_downt = min_dist_downt*(10000/90)
 # print(linear_min_dist_downt) # There is something weird ! Think through
 
-for i in range(48895):
+print("Dataset matrix")
+for i in range(38821):
 	reference_lat = dataset['latitude'].iloc[i]
 	reference_long = dataset['longitude'].iloc[i]
 	dataset['dist' + str(i)] = numpy.sqrt((dataset['latitude'] - reference_lat)**2 + (dataset['longitude'] - reference_long)**2)
-
-print("Dataset matrix")
-print(dataset[dist1])
+	# print(dataset["dist"+ str(i)])
+# print(dataset["dist"])
+#With this, create a measure of competition:
 
 #shuffles dataset
 dataset = dataset.sample(frac=1).reset_index(drop=True)
@@ -130,3 +131,4 @@ for training_index, test_index in kfold_object.split(data):
 
 # print("R2 score:", metrics.r2_score(new_data, new_target))#we are measuring how well do the target_test 
 
+#
