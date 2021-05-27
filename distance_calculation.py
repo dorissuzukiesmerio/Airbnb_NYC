@@ -6,6 +6,7 @@ from sklearn.model_selection import KFold #For splitting the data
 from sklearn import metrics #To evaluate goodness of fit
 
 
+
 from sklearn.ensemble import RandomForestClassifier #under different roof .ensemble, 
 #ensemble : component that can disagree with each other - decide by folder 
 from sklearn.preprocessing import LabelEncoder
@@ -52,7 +53,7 @@ min_dist_downt = min(dataset['Distance_downtown'])
 print(min_dist_downt)
 #Find what position it is:
 print("Index of min distance to downtown")
-# print(dataset['Distance_downtown'].index(str("21819.346823416097")))
+# print(dataset['Distance_downtown'].index(str(21819.346823416097)))
 # linear_min_dist_downt = min_dist_downt*(10000/90)
 # print(linear_min_dist_downt) # There is something weird ! Think through
 
@@ -61,9 +62,21 @@ for i in range(38821):
 	reference_lat = dataset['latitude'].iloc[i]
 	reference_long = dataset['longitude'].iloc[i]
 	dataset['dist' + str(i)] = numpy.sqrt((dataset['latitude'] - reference_lat)**2 + (dataset['longitude'] - reference_long)**2)
-	# print(dataset["dist"+ str(i)])
+	print(dataset["dist"+ str(i)])
 # print(dataset["dist"])
 #With this, create a measure of competition:
+
+
+#It is also important to drop the observations with price = 0
+dataset = dataset.drop(dataset[dataset['price'] == 0].index)
+
+
+# dataset['Distance'] = dataset.apply(lambda row: ((((latitude-40.7209)**2)+((longitude-74.0007)**2))**(1/2), axis == 1)
+dataset['Distance'] = (((dataset['latitude']-40.7209)**2)+((dataset['longitude']-74.0007)**2))**(1/2)
+
+print("Distance")
+print(dataset)
+
 
 #shuffles dataset
 dataset = dataset.sample(frac=1).reset_index(drop=True)
@@ -132,3 +145,4 @@ for training_index, test_index in kfold_object.split(data):
 # print("R2 score:", metrics.r2_score(new_data, new_target))#we are measuring how well do the target_test 
 
 #
+
