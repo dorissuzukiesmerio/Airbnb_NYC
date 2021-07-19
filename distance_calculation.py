@@ -9,7 +9,7 @@ from sklearn import metrics #To evaluate goodness of fit
 
 from sklearn.ensemble import RandomForestClassifier #under different roof .ensemble, 
 #ensemble : component that can disagree with each other - decide by folder 
-from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import LabelEncoder #for categorical output / used for dependent dummy
 
 import numpy
 from matplotlib import pyplot as plt #for plotting graphs
@@ -29,7 +29,7 @@ print(dataset.isnull().sum())
 #replacing all NaN values in 'reviews_per_month' with 0
 dataset.fillna({'reviews_per_month':0}, inplace=True)
 #examing changes
-dataset.reviews_per_month.isnull().sum()
+dataset.reviews_per_month.isnull().sum() #how many missing values
 
 dataset.dropna(inplace=True)	                 # Drop observations with missing data
 print(dataset)
@@ -57,15 +57,40 @@ print("Index of min distance to downtown")
 # linear_min_dist_downt = min_dist_downt*(10000/90)
 # print(linear_min_dist_downt) # There is something weird ! Think through
 
-print("Dataset matrix")
+# print("Dataset matrix")
+# for i in range(38821):
+# 	reference_lat = dataset['latitude'].iloc[i]
+# 	reference_long = dataset['longitude'].iloc[i]
+# 	dataset['dist' + str(i)] = numpy.sqrt((dataset['latitude'] - reference_lat)**2 + (dataset['longitude'] - reference_long)**2)
+# 	print(dataset["dist"+ str(i)])
+# print(dataset["dist"])
+
+#With this, create a measure of competition:
+# Idea: create, count, re-write. 
+
+print("\nInvestigating latitude and longitude")
+print(type('latitude'))
+print(type('longitude'))
+# #Tranform:
+for i in range(38821):
+	dataset['latitude'].iloc[i] = int(dataset['latitude']).iloc[i]
+# dataset['longitude'] = int(dataset['longitude'])
+
+print("Number of close by")
+
+i = 0
+dataset['close_by'] = 0
 for i in range(38821):
 	reference_lat = dataset['latitude'].iloc[i]
 	reference_long = dataset['longitude'].iloc[i]
-	dataset['dist' + str(i)] = numpy.sqrt((dataset['latitude'] - reference_lat)**2 + (dataset['longitude'] - reference_long)**2)
-	print(dataset["dist"+ str(i)])
-# print(dataset["dist"])
-#With this, create a measure of competition:
+	dataset['dist'] = numpy.sqrt((dataset['latitude'] - reference_lat)**2 + (dataset['longitude'] - reference_long)**2)
+	dataset['linear_dist'] = dataset['dist']*(10000/90)
+	if dataset['dist' < 3]:
+		dataset['close_by'] =+ 1
+	i = i + 1
 
+print("close_by column")
+print(dataset['close_by'].head())
 
 #It is also important to drop the observations with price = 0
 dataset = dataset.drop(dataset[dataset['price'] == 0].index)
@@ -99,7 +124,7 @@ target = dataset['price'].values     # Call the column by name, 'price'
 print("Target")
 print(target)
 
-# le = LabeEncoder()
+# le = LabeEncoder() #not necessary in this analysis
 
 # data = dataset.iloc[:, ADD COLUMNS HERE ].values
 data = [dataset['Distance'].values] # simple 
