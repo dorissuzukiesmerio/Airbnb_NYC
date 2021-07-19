@@ -71,10 +71,10 @@ print("Index of min distance to downtown")
 print("\nInvestigating latitude and longitude")
 print(type('latitude'))
 print(type('longitude'))
-# #Tranform:
-for i in range(38821):
-	dataset['latitude'].iloc[i] = int(dataset['latitude']).iloc[i]
-# dataset['longitude'] = int(dataset['longitude'])
+# # #Tranform:
+# for i in range(38821):
+# 	dataset['latitude'].iloc[i] = int(dataset['latitude']).iloc[i]
+# # dataset['longitude'] = int(dataset['longitude'])
 
 print("Number of close by")
 
